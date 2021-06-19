@@ -48,7 +48,7 @@ lazy val scalacheckVersion = "1.15.4"
 lazy val scalatestVersion = "3.2.9"
 lazy val scalaUriVersion = "3.5.0"
 
-lazy val gsheets4s = project.in(file("."))
+lazy val gsheets4s = projectMatrix.in(file("."))
   .settings(name := "gsheets4s")
   .settings(baseSettings)
   .settings(
@@ -74,3 +74,4 @@ lazy val gsheets4s = project.in(file("."))
       "eu.timepit" %% "refined-scalacheck" % refinedVersion
     ).map(_ % "test")
   )
+  .jvmPlatform(scalaVersions = Seq("2.12.6"))
