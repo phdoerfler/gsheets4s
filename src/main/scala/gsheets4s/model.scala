@@ -87,7 +87,7 @@ object model extends A1NotationLiteralSyntax {
           case Apply(_, List(Apply(_, (lcp@Literal(Constant(p: String))) :: Nil))) =>
             val valid = validate(p)
             if (valid.isRight) construct(c.Expr(lcp))
-            else c.abort(c.enclosingPosition, s"invalid $typeName: ${valid.left.get}")
+            else c.abort(c.enclosingPosition, s"invalid $typeName: ${valid.swap.getOrElse("¯\\_(ツ)_/¯")}")
         }
       }
     }

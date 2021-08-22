@@ -1,3 +1,5 @@
+Global / onChangedBuildSource := ReloadOnSourceChanges
+
 inThisBuild(List(
   organization := "com.github.benfradet",
   homepage := Some(url("https://github.com/BenFradet/gsheets4s")),
@@ -16,15 +18,10 @@ lazy val compilerOptions = Seq(
   "-deprecation",
   "-encoding", "UTF-8",
   "-feature",
-  "-language:existentials",
-  "-language:higherKinds",
+  "-language:_",
   "-unchecked",
-  "-Yno-adapted-args",
   "-Ywarn-dead-code",
-  "-Ywarn-numeric-widen",
-  "-Ywarn-unused-import",
-  "-Xfuture",
-  "-Ypartial-unification"
+  "-Ywarn-numeric-widen"
 )
 
 lazy val baseSettings = Seq(
@@ -35,13 +32,13 @@ lazy val baseSettings = Seq(
   scalacOptions in (Test, console) ~= {
     _.filterNot(Set("-Ywarn-unused-import"))
   },
-  scalaVersion := "2.12.6",
+  scalaVersion := "2.13.6",
 )
 
 lazy val catsVersion = "2.6.1"
-lazy val catsEffectVersion = "2.5.1"
+lazy val catsEffectVersion = "2.5.3"
 lazy val circeVersion = "0.14.1"
-lazy val refinedVersion = "0.9.26"
+lazy val refinedVersion = "0.9.27"
 lazy val attoVersion = "0.9.5"
 lazy val hammockVersion = "0.11.3"
 lazy val scalacheckVersion = "1.15.4"
@@ -74,4 +71,4 @@ lazy val gsheets4s = projectMatrix.in(file("."))
       "eu.timepit" %% "refined-scalacheck" % refinedVersion
     ).map(_ % "test")
   )
-  .jvmPlatform(scalaVersions = Seq("2.12.6"))
+  .jvmPlatform(scalaVersions = Seq("2.13.6"))
